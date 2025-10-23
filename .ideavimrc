@@ -1,0 +1,184 @@
+" ===============================
+" 🌍 Global configuration
+" ===============================
+
+let mapleader = " "
+" Space as <leader> key
+
+set scrolloff=20
+" Keep 20 lines visible around the cursor when scrolling
+
+set relativenumber
+" Show relative line numbers
+
+set number
+" Keep absolute line number for the current line
+
+set incsearch
+" Highlight matches while typing during search
+
+map Q gq
+" Reformat selected text (same as gq)
+
+
+" ===============================
+" 🔌 Plugins
+" ===============================
+Plug 'machakann/vim-highlightedyank'
+" Highlight text when yanked
+
+Plug 'tpope/vim-commentary'
+" Toggle comments with gcc / gc
+
+
+" ===============================
+" 📂 File actions
+" ===============================
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fr :action RecentFiles<CR>
+nnoremap <leader>fs :action GotoSymbol<CR>
+nnoremap <leader>pv :action GotoFile<CR>
+nnoremap <leader>fn :action NewFile<CR>
+
+nnoremap <leader>fe :action ActivateProjectToolWindow<CR>
+" Open Project view
+
+
+" ===============================
+" 💻 Code actions
+" ===============================
+nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>cc :action CommentByLineComment<CR>
+nnoremap <leader>cr :action RenameElement<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+" Indentation and visual move mappings
+
+vnoremap J :m '>+1<CR>gv=gv
+" Move selected block down
+
+vnoremap K :m '<-2<CR>gv=gv
+" Move selected block up
+
+nnoremap J mzJ`z
+" Join lines without moving the cursor
+
+
+" ===============================
+" ⚙️ Motion / Navigation
+" ===============================
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+
+" ===============================
+" 🧠 LSP / Goto navigation
+" ===============================
+nnoremap <leader>gc :action GotoClass<CR>
+nnoremap <leader>gi :action GotoImplementation<CR>
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gp :action GotoSuperMethod<CR>
+nnoremap <leader>gt :action GotoTest<CR>
+nnoremap <leader>gb :action Back<CR>
+nnoremap <leader>gf :action Forward<CR>
+nnoremap <leader>ge :action GotoNextError<CR>
+nnoremap <leader>gE :action GotoPreviousError<CR>
+nnoremap <leader>gs :action GotoSymbol<CR>
+
+
+" ===============================
+" 🏗️ Project navigation
+" ===============================
+nnoremap <leader>pb :action ShowNavBar<CR>
+nnoremap <leader>pf :action GotoFile<CR>
+nnoremap <leader>pr :action RecentFiles<CR>
+
+
+" ===============================
+" 🧩 Run & Debug
+" ===============================
+nnoremap ,r :action ContextRun<CR>
+nnoremap ,c :action RunClass<CR>
+nnoremap ,f :action ChooseRunConfiguration<CR>
+nnoremap ,t :action ActivateRunToolWindow<CR>
+nnoremap ,u :action Rerun<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,d :action ContextDebug<CR>
+nnoremap ,n :action ActivateDebugToolWindow<CR>
+
+
+" ===============================
+" ⚙️ Config / Reload
+" ===============================
+nnoremap <leader>,e :e ~/.ideavimrc<CR>
+" Edit config file
+
+nnoremap <leader>,r :action IdeaVim.ReloadVimRc.reload<CR>
+" Reload config
+
+
+" ===============================
+" 🧰 Terminal
+" ===============================
+nnoremap <leader>tt :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>to :action Terminal.OpenInTerminal<CR>
+
+
+" ===============================
+" 📑 Buffers / Bookmarks (Harpoon-like)
+" ===============================
+nnoremap <leader>ba :action ToggleBookmark<CR>
+" Add/remove bookmark
+
+nnoremap <leader>be :action ShowBookmarks<CR>
+nnoremap <leader>bb :action ShowBookmarks<CR>
+" Show bookmarks list
+
+nnoremap <C-s> :action BookmarksGotoBookmark1<CR>
+" Jump to bookmark 1
+
+nnoremap <C-h> :action BookmarksGotoBookmark3<CR>
+" Jump to bookmark 3
+
+nnoremap <C-n> :action BookmarksGotoBookmark4<CR>
+" Jump to bookmark 4
+
+" Go to next buffer
+nnoremap <leader>bn :bn<CR>
+
+" Go to previous buffer
+nnoremap <leader>bp :bp<CR>
+
+" Close current buffer
+nnoremap <leader>bd :bd<CR>
+
+" ===============================
+" 🛠️ General usability
+" ===============================
+nnoremap <C-d> <C-d>zz
+" Scroll down and recenter
+
+nnoremap <C-u> <C-u>zz
+" Scroll up and recenter
+
+nnoremap n nzzzv
+" Center search results when moving forward
+
+nnoremap N Nzzzv
+" Center search results when moving backward
+
+nnoremap =ap ma=ap'a
+" Re-indent paragraph without moving cursor
+
+inoremap <C-c> <Esc>
+" Make Ctrl+C behave like Escape
+
+nnoremap Q <nop>
+" Disable Ex mode (prevent accidental Q)
+
+xnoremap <leader>p "_dP
+" Paste over selection without overwriting clipboard
+
+nnoremap <leader>gg :action ToggleDistractionFreeMode<CR>:action ToggleRelativeLineNumbers<CR>
+" Distraction-Free Mode (good game mode)
